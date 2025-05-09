@@ -1,1 +1,68 @@
 @import "tailwindcss";
+
+@font-face {
+    font-family: "LemonMilk";
+    font-style: normal;
+    font-weight: normal;
+    font-display: auto;
+    src: url("assets/fonts/lemonmilk.ttf") format("truetype");
+}
+
+@font-face {
+    font-family: "JockeyOne";
+    font-style: normal;
+    font-weight: 200 700;
+    font-display: auto;
+    src: url("assets/fonts/JockeyOne-Regular.ttf") format("truetype");
+}
+.navbar{
+    @apply  p-5  bg-black text-[#fbcd10] w-screen;
+    @apply font-bold font-[LemonMilk] mx-auto sticky top-0 z-50 ;
+}
+.navLink{
+    @apply m-1 flex  justify-center items-center hover:scale-105 duration-100 ease-in-out ;   
+}
+.title{
+    @apply text-xl lg:text-4xl ;
+}
+
+body{
+    @apply bg-[#fbcd10] text-black w-screen h-screen;
+}
+
+.logo{
+    @apply w-[35px] h-[35px];
+}
+
+.container{
+    @apply m-10 w-auto;
+    @apply grid grid-cols-1 gap-y-4 lg:gap-y-2 lg:gap-x-2 lg:grid-cols-3 ;
+}
+
+.searchBar{
+    @apply flex justify-center items-center;
+    @apply bg-black text-[#fbcd10] ;
+    @apply p-2 rounded-lg  h-50 lg:h-60  ;  
+}
+
+.mainCard{
+    @apply flex justify-center items-center;
+    @apply bg-black text-[#fbcd10] font-[JockeyOne] font-bold text-[20px] ;
+    @apply p-2 rounded-lg h-75 lg:h-60 lg:col-span-2 hover:scale-101 duration-100 ease-in-out;  
+}
+
+.foreCast{
+
+    @apply py-4 rounded-lg  h-auto lg:col-span-3  ;
+    
+}
+
+.cardContainer{
+    @apply grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-5 pt-8 lg:pt-0;
+    @apply text-[#fbcd10] font-[JockeyOne] font-bold text-[20px]  ;
+}
+
+.card{
+    @apply bg-black text-[#fbcd10] rounded-lg;
+    @apply h-25 p-2 flex justify-center items-center md:h-75 hover:scale-105 duration-100 ease-in-out;
+}

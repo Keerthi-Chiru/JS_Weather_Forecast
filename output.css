@@ -1,4 +1,5 @@
 /*! tailwindcss v4.1.5 | MIT License | https://tailwindcss.com */
+@layer properties;
 @layer theme, base, components, utilities;
 @layer theme {
   :root, :host {
@@ -6,6 +7,15 @@
       "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
     --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono",
       "Courier New", monospace;
+    --color-black: #000;
+    --spacing: 0.25rem;
+    --text-xl: 1.25rem;
+    --text-xl--line-height: calc(1.75 / 1.25);
+    --text-4xl: 2.25rem;
+    --text-4xl--line-height: calc(2.5 / 2.25);
+    --font-weight-bold: 700;
+    --radius-lg: 0.5rem;
+    --ease-in-out: cubic-bezier(0.4, 0, 0.2, 1);
     --default-font-family: var(--font-sans);
     --default-mono-font-family: var(--font-mono);
   }
@@ -155,4 +165,239 @@
     display: none !important;
   }
 }
-@layer utilities;
+@layer utilities {
+  .container {
+    width: 100%;
+    @media (width >= 40rem) {
+      max-width: 40rem;
+    }
+    @media (width >= 48rem) {
+      max-width: 48rem;
+    }
+    @media (width >= 64rem) {
+      max-width: 64rem;
+    }
+    @media (width >= 80rem) {
+      max-width: 80rem;
+    }
+    @media (width >= 96rem) {
+      max-width: 96rem;
+    }
+  }
+}
+@font-face {
+  font-family: "LemonMilk";
+  font-style: normal;
+  font-weight: normal;
+  font-display: auto;
+  src: url("assets/fonts/lemonmilk.ttf") format("truetype");
+}
+@font-face {
+  font-family: "JockeyOne";
+  font-style: normal;
+  font-weight: 200 700;
+  font-display: auto;
+  src: url("assets/fonts/JockeyOne-Regular.ttf") format("truetype");
+}
+.navbar {
+  width: 100vw;
+  background-color: var(--color-black);
+  padding: calc(var(--spacing) * 5);
+  color: #fbcd10;
+  position: sticky;
+  top: calc(var(--spacing) * 0);
+  z-index: 50;
+  margin-inline: auto;
+  font-family: LemonMilk;
+  --tw-font-weight: var(--font-weight-bold);
+  font-weight: var(--font-weight-bold);
+}
+.navLink {
+  margin: calc(var(--spacing) * 1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  --tw-duration: 100ms;
+  transition-duration: 100ms;
+  --tw-ease: var(--ease-in-out);
+  transition-timing-function: var(--ease-in-out);
+  &:hover {
+    @media (hover: hover) {
+      --tw-scale-x: 105%;
+      --tw-scale-y: 105%;
+      --tw-scale-z: 105%;
+      scale: var(--tw-scale-x) var(--tw-scale-y);
+    }
+  }
+}
+.title {
+  font-size: var(--text-xl);
+  line-height: var(--tw-leading, var(--text-xl--line-height));
+  @media (width >= 64rem) {
+    font-size: var(--text-4xl);
+    line-height: var(--tw-leading, var(--text-4xl--line-height));
+  }
+}
+body {
+  height: 100vh;
+  width: 100vw;
+  background-color: #fbcd10;
+  color: var(--color-black);
+}
+.logo {
+  height: 35px;
+  width: 35px;
+}
+.container {
+  margin: calc(var(--spacing) * 10);
+  width: auto;
+  display: grid;
+  grid-template-columns: repeat(1, minmax(0, 1fr));
+  row-gap: calc(var(--spacing) * 4);
+  @media (width >= 64rem) {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+  @media (width >= 64rem) {
+    column-gap: calc(var(--spacing) * 2);
+  }
+  @media (width >= 64rem) {
+    row-gap: calc(var(--spacing) * 2);
+  }
+}
+.searchBar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--color-black);
+  color: #fbcd10;
+  height: calc(var(--spacing) * 50);
+  border-radius: var(--radius-lg);
+  padding: calc(var(--spacing) * 2);
+  @media (width >= 64rem) {
+    height: calc(var(--spacing) * 60);
+  }
+}
+.mainCard {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--color-black);
+  font-family: JockeyOne;
+  font-size: 20px;
+  --tw-font-weight: var(--font-weight-bold);
+  font-weight: var(--font-weight-bold);
+  color: #fbcd10;
+  height: calc(var(--spacing) * 75);
+  border-radius: var(--radius-lg);
+  padding: calc(var(--spacing) * 2);
+  --tw-duration: 100ms;
+  transition-duration: 100ms;
+  --tw-ease: var(--ease-in-out);
+  transition-timing-function: var(--ease-in-out);
+  &:hover {
+    @media (hover: hover) {
+      --tw-scale-x: 101%;
+      --tw-scale-y: 101%;
+      --tw-scale-z: 101%;
+      scale: var(--tw-scale-x) var(--tw-scale-y);
+    }
+  }
+  @media (width >= 64rem) {
+    grid-column: span 2 / span 2;
+  }
+  @media (width >= 64rem) {
+    height: calc(var(--spacing) * 60);
+  }
+}
+.foreCast {
+  height: auto;
+  border-radius: var(--radius-lg);
+  padding-block: calc(var(--spacing) * 4);
+  @media (width >= 64rem) {
+    grid-column: span 3 / span 3;
+  }
+}
+.cardContainer {
+  display: grid;
+  grid-template-columns: repeat(1, minmax(0, 1fr));
+  gap: calc(var(--spacing) * 5);
+  padding-top: calc(var(--spacing) * 8);
+  @media (width >= 48rem) {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+  @media (width >= 64rem) {
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+  }
+  @media (width >= 64rem) {
+    padding-top: calc(var(--spacing) * 0);
+  }
+  font-family: JockeyOne;
+  font-size: 20px;
+  --tw-font-weight: var(--font-weight-bold);
+  font-weight: var(--font-weight-bold);
+  color: #fbcd10;
+}
+.card {
+  border-radius: var(--radius-lg);
+  background-color: var(--color-black);
+  color: #fbcd10;
+  display: flex;
+  height: calc(var(--spacing) * 25);
+  align-items: center;
+  justify-content: center;
+  padding: calc(var(--spacing) * 2);
+  --tw-duration: 100ms;
+  transition-duration: 100ms;
+  --tw-ease: var(--ease-in-out);
+  transition-timing-function: var(--ease-in-out);
+  &:hover {
+    @media (hover: hover) {
+      --tw-scale-x: 105%;
+      --tw-scale-y: 105%;
+      --tw-scale-z: 105%;
+      scale: var(--tw-scale-x) var(--tw-scale-y);
+    }
+  }
+  @media (width >= 48rem) {
+    height: calc(var(--spacing) * 75);
+  }
+}
+@property --tw-font-weight {
+  syntax: "*";
+  inherits: false;
+}
+@property --tw-duration {
+  syntax: "*";
+  inherits: false;
+}
+@property --tw-ease {
+  syntax: "*";
+  inherits: false;
+}
+@property --tw-scale-x {
+  syntax: "*";
+  inherits: false;
+  initial-value: 1;
+}
+@property --tw-scale-y {
+  syntax: "*";
+  inherits: false;
+  initial-value: 1;
+}
+@property --tw-scale-z {
+  syntax: "*";
+  inherits: false;
+  initial-value: 1;
+}
+@layer properties {
+  @supports ((-webkit-hyphens: none) and (not (margin-trim: inline))) or ((-moz-orient: inline) and (not (color:rgb(from red r g b)))) {
+    *, ::before, ::after, ::backdrop {
+      --tw-font-weight: initial;
+      --tw-duration: initial;
+      --tw-ease: initial;
+      --tw-scale-x: 1;
+      --tw-scale-y: 1;
+      --tw-scale-z: 1;
+    }
+  }
+}
