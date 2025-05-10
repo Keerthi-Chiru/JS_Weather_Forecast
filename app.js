@@ -232,6 +232,37 @@ const createForecastCard = (cityName, weatherItem,aqiText,date, index) => {
 
         }
 
+// Function to save city to session storage
+
+function saveCityTosessionStorage(city) {
+    let cities = JSON.parse(sessionStorage.getItem("recentCities")) || [];
+    cities = cities.filter(c => c.toLowerCase() !== city.toLowerCase()); // avoid duplicates
+    cities.unshift(city); // add latest search to top
+    if (cities.length > 5) cities = cities.slice(0, 5); // max 5 cities
+    sessionStorage.setItem("recentCities", JSON.stringify(cities));
+    populateDropdown();
+}
+
+// Function to populate the dropdown with recent cities
+function populateDropdown() {
+    const cities = JSON.parse(sessionStorage.getItem("recentCities")) || [];
+    recentCitiesDropdown.innerHTML = `<option disabled selected>Select a recent city</option>`;
+    if (cities.length === 0) {
+        recentCitiesDropdown.style.display = "none";
+    } else {
+        recentCitiesDropdown.style.display = "block";
+        cities.forEach(city => {
+            const option = document.createElement("option");
+            option.value = city;
+            option.textContent = city;
+            recentCitiesDropdown.appendChild(option);
+        });
+    }
+}
+
+
+
+populateDropdown(); 
 
 
 // Event listeners for buttons    
@@ -242,3 +273,4 @@ recentCitiesDropdown.addEventListener("change", (e) => {
     cityInput.value = selectedCity;
     getLocationCordinates();
 });
+
