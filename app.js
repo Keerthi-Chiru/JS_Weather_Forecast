@@ -159,3 +159,86 @@ const getAQI = (lat, lon) => {
         });
 };
 
+// Function to create weather card HTML
+const createWeatherCard = (cityName, weatherItem, aqiText) => {
+    const tempCelsius = (weatherItem.main.temp - 273.15).toFixed(2);
+    const weatherIcon = `https://openweathermap.org/img/wn/${weatherItem.weather[0].icon}@2x.png`;
+    
+        mainCard.innerHTML = `
+            <div class="details">
+                <h2>${cityName}</h2>
+                <h4>${weatherItem.dt_txt ? weatherItem.dt_txt.split(" ")[0] : "Today"}</h4>
+                <h4>Wind Speed: ${weatherItem.wind.speed} M/s</h4>
+                <h4>Humidity: ${weatherItem.main.humidity} %</h4>
+                <h4>Air Quality: ${aqiText}</h4>
+            </div>
+
+            <div class="icon">
+                <img src="${weatherIcon}" alt="weather-icon">
+                 
+                <h4>${weatherItem.weather[0].description}</h4>
+            </div>`;
+
+    }
+    // Function to get dates for the forecast cards
+    const createForecastCards = (cityName, data, aqiText) => {
+    const usedDates = new Set();
+    let cardIndex = 1;
+
+    for (let item of data.list) {
+        const dateTime = item.dt_txt; 
+        const [date, time] = dateTime.split(" ");
+
+        if (time === "12:00:00" && !usedDates.has(date) && cardIndex <= 5) {
+            usedDates.add(date);
+            createForecastCard(cityName, item, aqiText, date, cardIndex);
+            cardIndex++;
+        }
+
+        if (cardIndex > 5) break;
+    }
+};
+
+// Function to create forecast card HTML
+const createForecastCard = (cityName, weatherItem,aqiText,date, index) => {
+    const tempCelsius = (weatherItem.main.temp - 273.15).toFixed(2);
+    const weatherIcon = `https://openweathermap.org/img/wn/${weatherItem.weather[0].icon}@2x.png`;
+    let card;
+    if (index == 1){
+        card=card1;
+    }
+    else if (index == 2){
+        card=card2;
+    }
+    else if (index == 3){
+        card=card3;
+    }
+    else if (index == 4){
+        card=card4;
+    }
+    else if (index == 5){
+        card=card5;
+    }
+
+            card.innerHTML = `
+
+                    <h3>${cityName} (${date})</h3>
+                    <img src="${weatherIcon}" alt="weather-icon">
+                    <h4>Desc: ${weatherItem.weather[0].description}</h4>
+                    <h4>Temperature: ${tempCelsius}°C</h4>
+                    <h4>Wind Speed: ${weatherItem.wind.speed} M/s</h4>
+                    <h4>Humidity: ${weatherItem.main.humidity} %</h4>
+                    <h4>Air Quality: ${aqiText}</h4>`
+
+        }
+
+
+
+// Event listeners for buttons    
+searchButton.addEventListener("click", getLocationCordinates);
+locationButton.addEventListener("click", getCurrentLocationCorodinates);
+recentCitiesDropdown.addEventListener("change", (e) => {
+    const selectedCity = e.target.value;
+    cityInput.value = selectedCity;
+    getLocationCordinates();
+});
