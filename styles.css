@@ -22,6 +22,9 @@
 .navLink{
     @apply m-1 flex  justify-center items-center hover:scale-105 duration-100 ease-in-out ;   
 }
+#recentCitiesDropdown{
+    @apply bg-black font-[JockeyOne] font-bold text-sm ;
+}
 .title{
     @apply text-xl lg:text-4xl ;
 }
@@ -40,14 +43,29 @@ body{
 }
 
 .searchBar{
-    @apply flex justify-center items-center;
+    @apply flex flex-col justify-around items-center;
     @apply bg-black text-[#fbcd10] ;
     @apply p-2 rounded-lg  h-50 lg:h-60  ;  
 }
+.searchInput{
+    @apply border-1 border-[#fbcd10] w-auto lg:w-100 md:w-75 p-2 rounded-lg;
+}
+
+.searchButton{
+    @apply bg-[#fbcd10] text-black font-bold font-[LemonMilk] ;
+    @apply p-2 rounded-lg; 
+    @apply hover:scale-95 duration-100 ease-in-out lg:text-lg text-sm;
+}
+
+.currentLocationButton{
+    @apply bg-[#fbcd10] text-black font-bold font-[LemonMilk] ;
+    @apply p-2 rounded-lg lg:text-lg text-sm; 
+    @apply hover:scale-95 duration-100 ease-in-out;
+}
 
 .mainCard{
-    @apply flex justify-center items-center;
-    @apply bg-black text-[#fbcd10] font-[JockeyOne] font-bold text-[20px] ;
+    @apply flex justify-around items-center;
+    @apply bg-black text-[#fbcd10] font-[JockeyOne] font-bold text-[20px] lg:text-2xl;
     @apply p-2 rounded-lg h-75 lg:h-60 lg:col-span-2 hover:scale-101 duration-100 ease-in-out;  
 }
 
@@ -63,6 +81,6 @@ body{
 }
 
 .card{
-    @apply bg-black text-[#fbcd10] rounded-lg;
-    @apply h-25 p-2 flex justify-center items-center md:h-75 hover:scale-105 duration-100 ease-in-out;
+    @apply bg-black text-[#fbcd10] rounded-lg ;
+    @apply h-auto text-sm lg:text-lg lg:p-2 flex flex-col justify-center items-center md:h-75 hover:scale-105 duration-100 ease-in-out;
 }
