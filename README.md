@@ -6,14 +6,13 @@ This application provides real-time weather forecasts based on user input, using
 
 1. Clone the repository to your local machine.
 
-   ```bash
-   git clone https://github.com/Keerthi-Chiru/weather-forecast-app.git
-   ```
+
+   git clone https://github.com/Keerthi-Chiru/JS_Weather_Forecast
+ 
 2. Navigate to the project folder:
 
-   ```bash
    cd weather-forecast-app
-   ```
+
 3. Open the `index.html` file in your browser.
 
 ## Usage Instructions
